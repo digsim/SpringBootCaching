@@ -1,5 +1,6 @@
 package org.digsim.homelinux.caching.businessDelegates;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -11,4 +12,6 @@ import java.util.List;
 public interface MoviesBD extends CrudRepository<Movie, Long> {
 	List<Movie> findByIMDBRating(Double IMDBRating);
 	List<Movie> findByTitle(String title);
+	@Query(value = "select * from Movie m where m.imdbrating>?1", nativeQuery = true)
+	List<Movie> findHighRatedMovies(Double ratingLimit);
 }

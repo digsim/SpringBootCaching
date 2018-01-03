@@ -22,7 +22,7 @@ public class Movie {
 	private String title;
 
 	@Column
-	@ElementCollection(targetClass=String.class)
+	@ElementCollection(targetClass = String.class)
 	private List<String> actors = new ArrayList<String>();
 
 	private int year;
