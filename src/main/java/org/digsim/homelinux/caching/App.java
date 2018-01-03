@@ -35,9 +35,8 @@ public class App {
 			// fetch all movies
 			LOG.info("Customers found with findAll():");
 			LOG.info("-------------------------------");
-			for (Movie movie : businessDelegate.findAll()) {
-				LOG.info(movie.toString());
-			}
+			Iterable<Movie> moviesIterator = businessDelegate.findAll();
+			moviesIterator.forEach(movie -> LOG.info(movie.toString()));
 			LOG.info("");
 
 			// fetch an individual movie by ID
