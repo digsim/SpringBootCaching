@@ -1,5 +1,8 @@
 package org.digsim.homelinux.caching.businessDelegates;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +11,7 @@ import java.util.List;
  * Created on 03/01/18.
  */
 public class Movie {
+	private static Logger LOG = LoggerFactory.getLogger(Movie.class);
 
 	private String title;
 	private List<String> actors = new ArrayList<String>();

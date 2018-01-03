@@ -44,9 +44,11 @@ class MoviesBDTest {
 		Movie savedMovie = movieBd.saveMovie(movie);
 
 		assertNotNull(savedMovie, "Movie should not be Null");
-		assertAll("Assert All of these",
-				() -> assertEquals(movie.getTitle(), savedMovie.getTitle(), "Titles should be the same"),
-				() -> assertEquals(movie.getIMDRating(), savedMovie.getIMDRating(), "IMDB Rating should be the same"));
+//		assertAll("Assert All of these",
+//				() -> assertEquals(movie.getTitle(), savedMovie.getTitle(), "Titles should be the same"),
+//				() -> assertEquals(movie.getIMDRating(), savedMovie.getIMDRating(), "IMDB Rating should be the same"));
+		assertEquals(movie.getTitle(), savedMovie.getTitle(), "Titles should be the same");
+		assertEquals(movie.getIMDRating(), savedMovie.getIMDRating(), "IMDB Rating should be the same");
 
 	}
 }
