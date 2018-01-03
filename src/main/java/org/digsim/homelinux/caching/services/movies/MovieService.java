@@ -1,6 +1,7 @@
-package org.digsim.homelinux.caching.services;
+package org.digsim.homelinux.caching.services.movies;
 
-import org.digsim.homelinux.caching.businessDelegates.Movie;
+import org.digsim.homelinux.caching.businessDelegates.movies.Movie;
+import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 import java.util.Optional;

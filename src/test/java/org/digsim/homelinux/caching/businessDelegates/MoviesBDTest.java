@@ -1,5 +1,7 @@
 package org.digsim.homelinux.caching.businessDelegates;
 
+import org.digsim.homelinux.caching.businessDelegates.movies.Movie;
+import org.digsim.homelinux.caching.businessDelegates.movies.MoviesBD;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;

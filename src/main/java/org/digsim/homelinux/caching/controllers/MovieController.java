@@ -1,18 +1,13 @@
 package org.digsim.homelinux.caching.controllers;
 
-import org.digsim.homelinux.caching.businessDelegates.Movie;
-import org.digsim.homelinux.caching.services.MovieService;
+import org.digsim.homelinux.caching.businessDelegates.movies.Movie;
+import org.digsim.homelinux.caching.services.movies.MovieService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,7 @@
-package org.digsim.homelinux.caching.services;
+package org.digsim.homelinux.caching.services.movies;
 
-import org.digsim.homelinux.caching.businessDelegates.Movie;
-import org.digsim.homelinux.caching.businessDelegates.MoviesBD;
+import org.digsim.homelinux.caching.businessDelegates.movies.Movie;
+import org.digsim.homelinux.caching.businessDelegates.movies.MoviesBD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

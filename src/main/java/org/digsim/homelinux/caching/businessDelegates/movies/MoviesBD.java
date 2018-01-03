@@ -1,5 +1,6 @@
-package org.digsim.homelinux.caching.businessDelegates;
+package org.digsim.homelinux.caching.businessDelegates.movies;
 
+import org.digsim.homelinux.caching.businessDelegates.movies.Movie;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

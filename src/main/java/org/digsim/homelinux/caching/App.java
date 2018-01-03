@@ -1,7 +1,8 @@
 package org.digsim.homelinux.caching;
 
-import org.digsim.homelinux.caching.businessDelegates.Movie;
-import org.digsim.homelinux.caching.businessDelegates.MoviesBD;
+import org.digsim.homelinux.caching.businessDelegates.actors.SimpleActorsBD;
+import org.digsim.homelinux.caching.businessDelegates.movies.Movie;
+import org.digsim.homelinux.caching.businessDelegates.movies.MoviesBD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -29,7 +30,7 @@ public class App {
 	}
 
 	@Bean
-	public CommandLineRunner demo(MoviesBD businessDelegate) {
+	public CommandLineRunner demo(MoviesBD businessDelegate, SimpleActorsBD actorBd) {
 		return (args) -> {
 			// save a couple of movies
 			businessDelegate.save(new Movie("From Dusk Till Dawn", 1981));
@@ -59,6 +60,15 @@ public class App {
 				LOG.info(dusk.toString());
 			}
 			LOG.info("");
+
+			LOG.info("Starting actor Toto");
+			LOG.info("Name is {}", actorBd.getByFirstname("Toto"));
+
+			LOG.info("Starting actor Harry");
+			LOG.info("Name is {}", actorBd.getByFirstname("Harry"));
+
+			LOG.info("Starting actor Toto");
+			LOG.info("Name is {}", actorBd.getByFirstname("Toto"));
 		};
 	}
 }

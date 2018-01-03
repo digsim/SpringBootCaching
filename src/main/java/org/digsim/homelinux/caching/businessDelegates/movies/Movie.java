@@ -1,4 +1,4 @@
-package org.digsim.homelinux.caching.businessDelegates;
+package org.digsim.homelinux.caching.businessDelegates.movies;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
