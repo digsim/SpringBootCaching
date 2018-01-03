@@ -31,7 +31,8 @@ public class MovieController {
 	private MovieService movieService;
 
 
-	@RequestMapping(value="/",  method = RequestMethod.POST)
+	//@RequestMapping(value="/",  method = RequestMethod.POST)
+	@PostMapping(value = "/")
 	public ResponseEntity<Movie> add(@RequestBody Movie input) {
 		LOG.debug("Movie Title: {}", input.getTitle());
 		List<Movie> existingMovie = movieService.findByTitle(input.getTitle());
@@ -48,7 +49,8 @@ public class MovieController {
 
 	}
 
-	@RequestMapping(value="/highRated")
+	//@RequestMapping(value="/highRated")
+	@GetMapping(value="/highRated")
 	public List<Movie> getHighRatedMovies(){
 		Iterable<Movie> moviesIterable = movieService.findSixPlusMovies();
 		List<Movie> movies = new ArrayList<>();
