@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @Configuration
 @SpringBootApplication
 @EnableJpaRepositories
+@EnableCaching
 public class App {
 	private static Logger LOG = LoggerFactory.getLogger(App.class);
 
@@ -67,7 +69,22 @@ public class App {
 			LOG.info("Starting actor Harry");
 			LOG.info("Name is {}", actorBd.getByFirstname("Harry"));
 
-			LOG.info("Starting actor Toto");
+			LOG.info("Speed Starting actor Toto");
+			LOG.info("Name is {}", actorBd.getByFirstname("Toto"));
+
+			LOG.info("Starting actor Marry");
+			LOG.info("Name is {}", actorBd.getByFirstname("Marry"));
+
+			LOG.info("Starting actor Jane");
+			LOG.info("Name is {}", actorBd.getByFirstname("Jane"));
+
+			LOG.info("Starting actor Ford");
+			LOG.info("Name is {}", actorBd.getByFirstname("Ford"));
+
+			LOG.info("Starting actor Prefect");
+			LOG.info("Name is {}", actorBd.getByFirstname("Prefect"));
+
+			LOG.info("Slow Starting actor Toto");
 			LOG.info("Name is {}", actorBd.getByFirstname("Toto"));
 		};
 	}

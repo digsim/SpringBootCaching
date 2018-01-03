@@ -1,5 +1,6 @@
 package org.digsim.homelinux.caching.businessDelegates.actors;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class SimpleActorsBD implements ActorsBD {
 
 	@Override
+	@Cacheable("actors")
 	public Actor getByFirstname(String name) {
 		simulateSlowService();
 		Actor a = new Actor();
