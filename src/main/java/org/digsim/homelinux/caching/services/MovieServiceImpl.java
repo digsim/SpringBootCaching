@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author AdNovum Informatik AG
@@ -35,9 +36,9 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public Movie findOne(long id) {
+	public Optional<Movie> findOne(long id) {
 		Assert.notNull(id, "Id can't be null");
-		return moviesBd.findOne(id);
+		return moviesBd.findById(id);
 	}
 
 	@Override
@@ -69,6 +70,6 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public void delete(long id) {
-		moviesBd.delete(id);
+		moviesBd.deleteById(id);
 	}
 }

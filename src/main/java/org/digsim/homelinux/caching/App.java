@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.util.Optional;
+
 /**
  * Hello world!
  */
@@ -44,7 +46,7 @@ public class App {
 			LOG.info("");
 
 			// fetch an individual movie by ID
-			Movie movie  = businessDelegate.findOne(1L);
+			Optional<Movie> movie  = businessDelegate.findById(1L);
 			LOG.info("Movie found with findOne(1L):");
 			LOG.info("--------------------------------");
 			LOG.info(movie.toString());

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author AdNovum Informatik AG
@@ -66,7 +67,8 @@ public class MovieController {
 
 	@RequestMapping(value="/{id}")
 	public Movie getMovie(@PathVariable long id){
-		return movieService.findOne(id);
+		Optional<Movie> movie =  movieService.findOne(id);
+		return movie.orElseThrow( IllegalStateException::new );
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
