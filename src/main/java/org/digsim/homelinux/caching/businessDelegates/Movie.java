@@ -3,6 +3,7 @@ package org.digsim.homelinux.caching.businessDelegates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,25 +11,44 @@ import java.util.List;
  * @author AdNovum Informatik AG
  * Created on 03/01/18.
  */
+@Entity
 public class Movie {
 	private static Logger LOG = LoggerFactory.getLogger(Movie.class);
 
-	private String title;
-	private List<String> actors = new ArrayList<String>();
-	private int year;
-	private double IMDRating;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-	public Movie(){
+	private String title;
+
+	@Column
+	@ElementCollection(targetClass=String.class)
+	private List<String> actors = new ArrayList<String>();
+
+	private int year;
+
+	private double iMDBRating;
+
+	protected Movie() {
 
 	}
 
-	public Movie(String title, int year){
+	public Movie(String title, int year) {
 		this.title = title;
 		this.year = year;
 	}
 
-	public String getKey(){
-		return title+"_"+year;
+	@Override
+	public String toString() {
+		return String.format("Movie[id=%d, title='%s', imdb rating='%f'", id, title, iMDBRating);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getKey() {
+		return title + "_" + year;
 	}
 
 	public String getTitle() {
@@ -55,11 +75,11 @@ public class Movie {
 		this.year = year;
 	}
 
-	public double getIMDRating() {
-		return IMDRating;
+	public double getiMDBRating() {
+		return iMDBRating;
 	}
 
-	public void setIMDRating(double IMDRating) {
-		this.IMDRating = IMDRating;
+	public void setiMDBRating(double IMDRating) {
+		this.iMDBRating = IMDRating;
 	}
 }

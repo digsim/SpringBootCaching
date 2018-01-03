@@ -1,6 +1,6 @@
 <!-- // {{start:logback}}  -->
 <!-- turn debug=true on for logback-test.xml to help debug logging configurations. -->
-<configuration debug="false">
+<configuration debug="true">
 
     <!--
     We prefer logging to console instead of a File. Its very easy

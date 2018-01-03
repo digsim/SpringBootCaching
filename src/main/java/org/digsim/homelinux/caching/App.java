@@ -4,28 +4,56 @@ import org.digsim.homelinux.caching.businessDelegates.Movie;
 import org.digsim.homelinux.caching.businessDelegates.MoviesBD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Hello world!
  */
+@SpringBootApplication
 public class App {
 	private static Logger LOG = LoggerFactory.getLogger(App.class);
-	private static MoviesBD moviesBd = new MoviesBD();
+
 
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
 		LOG.info("Starting main method");
-		Movie movie = new Movie("From Dusk Till Dawn", 1981);
-		movie.setIMDRating(5.6);
-		List<String> actors = new ArrayList<>();
-		actors.add("John Doe");
-		actors.add("Jane Doe");
-		movie.setActors(actors);
-		Movie savedMovie = moviesBd.saveMovie(movie);
-		LOG.info("Title of movie is: \"{}", savedMovie.getTitle());
-		LOG.debug("IMDB Rating of movie is: \"{}", savedMovie.getIMDRating());
+		SpringApplication.run(App.class);
+	}
+
+	@Bean
+	public CommandLineRunner demo(MoviesBD businessDelegate) {
+		return (args) -> {
+			// save a couple of movies
+			businessDelegate.save(new Movie("From Dusk Till Dawn", 1981));
+			businessDelegate.save(new Movie("24 hours", 1982));
+			businessDelegate.save(new Movie("28 days later", 1983));
+			businessDelegate.save(new Movie("David", 1984));
+			businessDelegate.save(new Movie("Michelle", 1985));
+
+			// fetch all movies
+			LOG.info("Customers found with findAll():");
+			LOG.info("-------------------------------");
+			for (Movie movie : businessDelegate.findAll()) {
+				LOG.info(movie.toString());
+			}
+			LOG.info("");
+
+			// fetch an individual movie by ID
+			Movie movie  = businessDelegate.findOne(1L);
+			LOG.info("Movie found with findOne(1L):");
+			LOG.info("--------------------------------");
+			LOG.info(movie.toString());
+			LOG.info("");
+
+			// fetch movie by title
+			LOG.info("Customer found with findByLastName('28 days later'):");
+			LOG.info("--------------------------------------------");
+			for (Movie dusk : businessDelegate.findByTitle("28 days later")) {
+				LOG.info(dusk.toString());
+			}
+			LOG.info("");
+		};
 	}
 }
