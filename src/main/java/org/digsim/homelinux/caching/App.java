@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +24,13 @@ import java.util.Optional;
 @SpringBootApplication
 @EnableJpaRepositories
 @EnableCaching
-public class App {
+public class App extends SpringBootServletInitializer {
 	private static Logger LOG = LoggerFactory.getLogger(App.class);
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(App.class);
+	}
 
 
 	public static void main(String[] args) {
